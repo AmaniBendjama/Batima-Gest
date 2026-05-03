@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-primary: #059669;
+  --color-primary-light: #10B981;
+  --color-primary-dark: #047857;
+  
+  --color-secondary: #D97706;
+  --color-secondary-light: #F59E0B;
+  --color-secondary-dark: #B45309;
+  
+  --color-success: #22C55E;
+  --color-warning: #F97316;
+  --color-danger: #E11D48;
+  --color-info: #14B8A6;
+  
+  /* More colorful background, less white */
+  --color-background-page: #d1fae5; 
+  --color-background-card: #f0fdf4;
+  
+  /* Rich forest green text with very high contrast */
+  --color-text-main: #022c22; 
+  --color-text-secondary: #065f46; 
+  
+  /* Stronger colorful border */
+  --color-border-main: #6ee7b7; 
+
+  /* Deep emerald for dark sections */
+  --color-dark-bg: #022c22; 
+  --color-dark-card: #064e3b;
+}
+
+@layer base {
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--color-background-page);
+    color: var(--color-text-main);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Positivus-style highlighted label tag */
+@layer components {
+  .label-tag {
+    display: inline-block;
+    background-color: var(--color-primary-light);
+    color: var(--color-text-main);
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .label-tag-dark {
+    display: inline-block;
+    background-color: var(--color-dark-bg);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+
+  .card-outlined {
+    background-color: var(--color-background-card);
+    border: 1.5px solid var(--color-text-main);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .card-dark {
+    background-color: var(--color-dark-bg);
+    color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .card-accent {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-main);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .nav-link-active {
+    color: var(--color-primary);
+    font-weight: 600;
+    position: relative;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(var(--tw-rotate, 0deg)); }
+  50% { transform: translateY(-15px) rotate(var(--tw-rotate, 0deg)); }
+  100% { transform: translateY(0px) rotate(var(--tw-rotate, 0deg)); }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  .animate-float-slow {
+    animation: float 8s ease-in-out 1s infinite;
+  }
+}
